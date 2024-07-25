@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "author": "Tomas Hubelbauer, Koepel",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "u",
+      "top": 33.94,
+      "left": 793.3,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "2",
+      "top": 346.2,
+      "left": 297.86,
+      "attrs": { "chain": "6", "color": "white" }
+    }
+  ],
+  "connections": [
+    [ "u:GND.2", "2:GND", "black", [ "*", "h6" ] ],
+    [ "u:5V", "2:V+", "red", [ "*", "h12" ] ],
+    [ "u:3", "2:DIN", "orange", [ "h29", "v64", "*", "h57" ] ],
+    [ "u:4", "2:CLK", "blue", [ "h32", "v77", "*", "h21" ] ],
+    [ "u:5", "2:CS", "green", [ "h35", "v90", "*", "h39" ] ]
+  ],
+  "serialMonitor": { "display": "never" },
+  "dependencies": {}
+}
