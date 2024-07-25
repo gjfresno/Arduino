@@ -19,15 +19,17 @@ Esto descargará todos los archivos del repositorio a tu computadora en una carp
 
 Una vez que hayas clonado el repositorio, puedes explorar las diferentes unidades. Cada unidad está organizada en su propia carpeta:
 
-Unidad 2 - GPIO
-Unidad 4 - TEMPORIZADORES
-Unidad 5 - MaqTimers/TimerOne_MaqTimer
-Unidad 7 - Antirebote
-Unidad 8 - Barrido Salidas
-Unidad 9 - Display7seg
-Unidad 10 - Display matricial
-Unidad 11 - Puerto Serial
-Unidad 13 - ADC/ADC
+- Unidad 2 - GPIO
+- Unidad 3 - Maquina de Estados
+- Unidad 4 - Temporizadores
+- Unidad 5 - Maquina de Timers
+- Unidad 7 - Antirebote
+- Unidad 8 - Barrido Salidas
+- Unidad 9 - Display7seg
+- Unidad 10 - Display matricial
+- Unidad 11 - Puerto Serial
+- Unidad 13 - ADC/ADC
+
 Cada carpeta contiene los ejemplos correspondientes a esa unidad. Puedes navegar por estas carpetas para encontrar los archivos que necesitas.
 
 ## Actualizar los Ejemplos
