@@ -16,22 +16,38 @@ void setup() {
 
 char Buf[30];
 
+long suma = 0;
+long promedio = 0;
+char contador = 0;
+
+
+#define DELTA_VARIACION               20
+#define CANTIDAD_MUESTRAS_PROMEDIO    10
+
 void loop() {
   // Leer el valor analógico de A0
-  int cuenta = analogRead(A0);
+  int medicion_actual = analogRead(A0);
 
-  //float voltage = ((float)cuenta * 5)/1023;
-  int voltage = ((long)cuenta * 5 * 1000)/1023;
+  suma += medicion_actual;
+  contador++;
+  if(contador >= CANTIDAD_MUESTRAS_PROMEDIO)
+  {
+    promedio = suma / CANTIDAD_MUESTRAS_PROMEDIO;
 
-  // Imprimir el valor leído en el monitor serie
-/*  Serial.print("Cuentas: ");
-  Serial.print(cuenta);
-  Serial.print(" Volt: ");
-  Serial.println(voltage);*/
-  sprintf(Buf, "Cuentas: %d Volt: %d.%d", cuenta, (voltage / 1000), (voltage % 1000));
-  Serial.println(Buf);
+    sprintf(Buf, "Suma: %d Prom: %d", suma, promedio);
+    Serial.println(Buf);
+    
+    suma = 0;
+    contador = 0;
 
-  delay(1000);
+    int voltage = ((long)promedio * 5 * 1000)/1023;
+  
+    // Imprimir el valor leído en el monitor serie
+    sprintf(Buf, "Cuentas: %d Volt: %d.%d", medicion_actual, (voltage / 1000), (voltage % 1000));
+    Serial.println(Buf);
+  }
+
+  delay(100);
 }
 
 void Systick_Handler(void)
