@@ -74,14 +74,14 @@ void PSerial_Analisis(char dato)
       if(dato == '<')
       {
         // Si recibimos la trama completa debemos enviar la temperatura      
-        PSerial_Enviar();
+        PSerial_Enviar_Respuesta();
       }
       estadoRecepcion = 0; 
       break;
   }
 }
 
-void PSerial_Enviar(void)
+void PSerial_Enviar_Respuesta(void)
 {
   // La trama a enviar es [>][id][T][temp max 5 digitos][chk][<]
   // Indices               0  1   2  3 4 5 6 7           8    9
