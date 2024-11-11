@@ -26,19 +26,16 @@ void TimerInit(void)
   // - timer 0 
   // - prescaler 80 (frecuencia de 1 MHz)
   // - contador ascendente
-  //My_timer = timerBegin(0, 80, true);                       // VERSION VIEJA
-  My_timer = timerBegin(1000000);
+  My_timer = timerBegin(0, 80, true);
 
   // Vincular la función de interrupción al temporizador
-  //timerAttachInterrupt(My_timer, Systick_Handler, true);    // VERSION VIEJA
-  timerAttachInterrupt(My_timer, Systick_Handler);
+  timerAttachInterrupt(My_timer, Systick_Handler, true);
 
   // Configurar el temporizador para que dispare la interrupción cada 1 segundo (1,000,000 microsegundos)
-  //timerAlarmWrite(My_timer, 1000, true);                    // VERSION VIEJA
-  timerAlarm(My_timer, 1000, true, 0); 
+  timerAlarmWrite(My_timer, 1000, true);
 
   // Habilitar la alarma del temporizador para que empiece a funcionar
-  //timerAlarmEnable(My_timer);                               // VERSION VIEJA
+  timerAlarmEnable(My_timer);
 
   Serial.println("Timer inicializado..");
 }
