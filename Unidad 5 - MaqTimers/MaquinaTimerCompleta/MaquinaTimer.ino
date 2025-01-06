@@ -56,7 +56,7 @@ void Timer_Inicializar(char NumeroTimer)
 void Timer_Disparar(char NumeroTimer, unsigned int tiempo, unsigned int tiempoRecarga, void (*funcion)(void))
 {
   // Esta funcion es la que se encarga de configurar la temporizacion
-  Timer[NumeroTimer].contador = tiempo * BASEDETIEMPO;
+  Timer[NumeroTimer].contador = tiempo;
   Timer[NumeroTimer].fin = 0;
   Timer[NumeroTimer].func = funcion;
   Timer[NumeroTimer].recarga = tiempoRecarga;
