@@ -8,6 +8,8 @@ void setup() {
   Timer1.attachInterrupt( Systick_Handler );
 
   pinMode(Pin_Led, OUTPUT);
+
+  Serial.begin(9600);
 }
 
 void Systick_Handler(void)
@@ -42,6 +44,9 @@ void Estado_NoLlenando(void)
   if(TECLADO_Read() == '1')
   {
     digitalWrite(Bomba, 1);
+
+    Serial.println("Bomba Encendida");
+
     EstadoBomba = 1;
   }
 }

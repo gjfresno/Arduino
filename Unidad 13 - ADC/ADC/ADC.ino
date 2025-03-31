@@ -20,12 +20,23 @@ long suma = 0;
 long promedio = 0;
 char contador = 0;
 
+char flag_ADC = 0;
 
 #define DELTA_VARIACION               20
 #define CANTIDAD_MUESTRAS_PROMEDIO    10
 
 void loop() {
   // Leer el valor analógico de A0
+
+  if(flag_ADC){
+    flag_ADC = 0;
+
+    ADC_Leer();
+  }
+
+}
+
+void ADC_Leer(void){
   int medicion_actual = analogRead(A0);
 
   suma += medicion_actual;
@@ -46,11 +57,18 @@ void loop() {
     sprintf(Buf, "Cuentas: %d Volt: %d.%d", medicion_actual, (voltage / 1000), (voltage % 1000));
     Serial.println(Buf);
   }
-
-  delay(100);
 }
 
 void Systick_Handler(void)
 {
   // Aca entro cada 1ms = 1000Hz
+  static unsigned int divisor = 100;
+
+  divisor--;
+  if(divisor == 0){
+    divisor = 100;
+
+    // Flag que indica que tengo que realizar una nueva medicion de ADC
+    flag_ADC = 1;
+  }
 }

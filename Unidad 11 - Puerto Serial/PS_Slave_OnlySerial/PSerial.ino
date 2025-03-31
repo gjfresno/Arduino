@@ -17,6 +17,7 @@ void PSerial_Analisis(char dato)
   // chk = Suma de los bytes anteriores
   
   static int estadoRecepcion = 0;
+  
   switch(estadoRecepcion)
   {
     case 0:
@@ -91,12 +92,12 @@ void PSerial_Enviar_Respuesta(void)
   sprintf(Buf, ">%cT%05d", EQUIPO_ID, Temperatura_Leida); // Armo la trama
   
   char checksum = 0;
-  for(int i = 0 ; i < 8 ; i++)
+  for(int i = 0 ; i < UBICACION_BYTES_CHECKSUM ; i++)
   {
     checksum += Buf[i]; 
   }
-  Buf[8] = checksum;
-  Buf[9] = '<';
+  Buf[UBICACION_BYTES_CHECKSUM] = checksum;
+  Buf[UBICACION_BYTES_CHECKSUM + 1] = '<';
 
   // Envio la trama generada
   for(int i = 0 ; i < 10 ; i++)
